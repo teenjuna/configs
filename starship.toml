@@ -1,0 +1,2 @@
+format = '$directory$git_branch$python$line_break$character'
+add_newline = false

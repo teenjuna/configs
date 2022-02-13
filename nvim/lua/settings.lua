@@ -27,12 +27,14 @@ vim.opt.hlsearch = false
 vim.opt.updatetime = 100
 vim.diagnostic.config {
   virtual_text = false,
+  underline = true,
 }
 -- show diagnostics in hover window on cursor hold (see lspconfig wiki)
 -- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
-vim.cmd [[
-  autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
-]]
+-- vim.cmd [[
+--   " autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
+--   autocmd! CursorHold * lua vim.diagnostic.open_float(nil, { focus=false })
+-- ]]
 
 -- ----------------------------------------------------------------------------
 -- System integration
@@ -82,6 +84,9 @@ vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers, {})
 vim.keymap.set('n', '<leader>g', require('telescope.builtin').live_grep, {})
 vim.keymap.set('n', '<leader>s', require('telescope.builtin').lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>t', require('telescope.builtin').treesitter, {})
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set({ 'n', 'v' }, '<leader>w', require('hop').hint_words, {})
 vim.keymap.set({ 'n', 'v' }, '<leader>l', require('hop').hint_lines, {})
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>', require('hop').hint_char2, {})

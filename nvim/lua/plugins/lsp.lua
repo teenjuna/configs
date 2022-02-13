@@ -86,6 +86,6 @@ require('null-ls').setup {
       filetypes = { 'html', 'json', 'yaml', 'markdown' },
     },
     require('null-ls').builtins.diagnostics.eslint,
-    require('null-ls').builtins.completion.spell,
+    -- require('null-ls').builtins.completion.spell, -- this only brings garbage
   },
 }

@@ -2,15 +2,15 @@ local cmp = require 'cmp'
 local lspkind = require 'lspkind'
 
 cmp.setup {
-  gjekrljgle,
-}
-
-cmp.setup {
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
   mapping = {
     ['<c-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<c-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    -- or should I use <c-y>?
-    ['<cr>'] = cmp.mapping.confirm {
+    ['<c-y>'] = cmp.mapping.confirm {
       bahvior = cmp.ConfirmBehavior.Insert,
       select = true,
     },
@@ -23,6 +23,7 @@ cmp.setup {
 
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'nvim_lua' },
     { name = 'path' },
   }, {
@@ -36,8 +37,9 @@ cmp.setup {
       menu = {
         nvim_lsp = '[lsp]',
         nvim_lua = '[api]',
-        path = '[path]',
+        luasnip = '[snip]',
         buffer = '[buf]',
+        path = '[path]',
       },
     },
   },

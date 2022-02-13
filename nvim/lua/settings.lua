@@ -24,7 +24,7 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = false
-vim.opt.updatetime = 150
+vim.opt.updatetime = 100
 vim.diagnostic.config {
   virtual_text = false,
 }
@@ -39,17 +39,18 @@ vim.cmd [[
 -- ----------------------------------------------------------------------------
 vim.opt.mouse = 'a' -- enable mouse
 vim.opt.clipboard = 'unnamedplus' -- use system clipboard
-vim.swapfile = false -- disable swapfile
-vim.undofile = true -- save file history across sessions
-vim.undodir = '~/.cache/nvim' -- set directory for the undo files
+vim.opt.autoread = true
+vim.opt.swapfile = false -- disable swapfile
+vim.opt.undofile = true -- save file history across sessions
+vim.opt.undodir = vim.env.HOME .. '/.cache/nvim' -- set directory for the undo files
 vim.cmd [[colorscheme moonfly]]
 
 -- ----------------------------------------------------------------------------
 -- Identation
 -- ----------------------------------------------------------------------------
-vim.opt.tabstop = 4 -- number of visual spaces per TAB
-vim.opt.softtabstop = 4 -- number of spaces in tab when editing
-vim.opt.shiftwidth = 4 -- number of spaces to use for autoindent
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 0 -- value of tabstop
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
@@ -66,8 +67,8 @@ vim.opt.linebreak = true
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', {})
 -- vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', {})
-vim.keymap.set('n', 'H', '^', {})
-vim.keymap.set('n', 'L', '$', {})
+vim.keymap.set({ 'n', 'v' }, 'H', '^', {})
+vim.keymap.set({ 'n', 'v' }, 'L', '$', {})
 vim.keymap.set('n', 'n', 'nzz', {})
 vim.keymap.set('n', 'N', 'Nzz', {})
 vim.keymap.set('n', '*', '*zz', {})

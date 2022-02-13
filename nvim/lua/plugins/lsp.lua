@@ -24,6 +24,9 @@ require('rust-tools').setup {
     on_attach = on_attach,
     settings = {
       ['rust-analyzer'] = {
+        rustfmt = {
+          extraArgs = { '+nightly' },
+        },
         checkOnSave = {
           command = 'clippy',
         },
@@ -65,6 +68,12 @@ require('lspconfig').sumneko_lua.setup {
 -- More: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jdtls
 -- TODO: setup formatting on save (null-ls or jdtls config)
 require('lspconfig').jdtls.setup { cmd = { 'jdtls' } }
+
+-- Setup Emmet
+require('lspconfig').emmet_ls.setup {
+  on_attach = on_attach,
+  filetypes = { 'html', 'css', 'tsx', 'jsx' },
+}
 
 -- Setup null-ls
 require('null-ls').setup {

@@ -18,7 +18,6 @@ vim.opt.hidden = true
 vim.lazyredraw = true
 vim.opt.synmaxcol = 240
 vim.opt.termguicolors = true
-vim.cmd [[colorscheme moonfly]]
 vim.g.moonflyItalics = 0
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
@@ -45,7 +44,8 @@ vim.opt.autoread = true
 vim.opt.swapfile = false -- disable swapfile
 vim.opt.undofile = true -- save file history across sessions
 vim.opt.undodir = vim.env.HOME .. '/.cache/nvim' -- set directory for the undo files
-vim.cmd [[colorscheme moonfly]]
+-- vim.cmd [[colorscheme moonfly]]
+vim.cmd [[colorscheme catppuccin]]
 
 -- ----------------------------------------------------------------------------
 -- Identation

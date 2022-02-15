@@ -75,6 +75,11 @@ require('lspconfig').emmet_ls.setup {
   filetypes = { 'html', 'css', 'tsx', 'jsx' },
 }
 
+-- Setup tsserver
+require('lspconfig').tsserver.setup {
+  on_attach = on_attach,
+}
+
 -- Setup null-ls
 require('null-ls').setup {
   on_attach = on_attach,
@@ -85,7 +90,7 @@ require('null-ls').setup {
     require('null-ls').builtins.formatting.prettier.with {
       filetypes = { 'html', 'json', 'yaml', 'markdown' },
     },
-    require('null-ls').builtins.diagnostics.eslint,
+    require('null-ls').builtins.diagnostics.eslint_d,
     -- require('null-ls').builtins.completion.spell, -- this only brings garbage
   },
 }

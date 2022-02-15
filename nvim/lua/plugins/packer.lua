@@ -28,6 +28,12 @@ return require('packer').startup(function(use)
   -- Themes
   use 'tjdevries/colorbuddy.nvim'
   use 'bluz71/vim-moonfly-colors'
+  use {
+    'catppuccin/nvim',
+    as = 'catppuccin',
+  }
+  -- use 'rebelot/kanagawa.nvim'
+  use 'folke/tokyonight.nvim'
 
   -- LSP
   use 'neovim/nvim-lspconfig'

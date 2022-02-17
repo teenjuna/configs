@@ -16,7 +16,7 @@ vim.opt.colorcolumn = '80'
 vim.opt.splitright = true
 vim.opt.hidden = true
 vim.lazyredraw = true
-vim.opt.synmaxcol = 240
+vim.opt.synmaxcol = 500
 vim.opt.termguicolors = true
 vim.g.moonflyItalics = 0
 vim.opt.incsearch = true
@@ -67,6 +67,7 @@ vim.opt.linebreak = true
 -- Mappings
 -- ----------------------------------------------------------------------------
 vim.g.mapleader = ' '
+vim.keymap.set('i', 'jk', '<esc>', {})
 vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', {})
 -- vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', {})
 vim.keymap.set({ 'n', 'v' }, 'H', '^', {})

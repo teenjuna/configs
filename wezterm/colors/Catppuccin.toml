@@ -10,4 +10,3 @@ selection_fg = "#D9E0EE"
 
 ansi = [ "#6E6C7E", "#F28FAD", "#ABE9B3", "#FAE3B0", "#96CDFB", "#F5C2E7","#89DCEB", "#C3BAC6", ]
 brights = [ "#988BA2", "#F28FAD", "#ABE9B3", "#FAE3B0", "#96CDFB", "#F5C2E7", "#89DCEB", "#D9E0EE", ]
-

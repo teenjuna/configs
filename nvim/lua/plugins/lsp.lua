@@ -78,6 +78,15 @@ require('lspconfig').emmet_ls.setup {
   filetypes = { 'html', 'css', 'tsx', 'jsx' },
 }
 
+-- require('lspconfig').html.setup {
+--   on_attach = on_attach,
+--   settings = {
+--     ['html'] = {
+--       ['editor.links'] = false,
+--     },
+--   },
+-- }
+
 -- Setup tailwind
 require('lspconfig').tailwindcss.setup {}
 
@@ -111,6 +120,6 @@ require('null-ls').setup {
       filetypes = { 'html', 'css', 'scss', 'json', 'yaml', 'markdown' },
     },
     require('null-ls').builtins.diagnostics.eslint_d,
-    -- require('null-ls').builtins.completion.spell, -- this only brings garbage
+    require('null-ls').builtins.completion.spell, -- this only brings garbage
   },
 }

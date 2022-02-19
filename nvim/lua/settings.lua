@@ -15,7 +15,7 @@ vim.opt.signcolumn = 'number'
 vim.opt.colorcolumn = '80'
 vim.opt.splitright = true
 vim.opt.hidden = true
-vim.lazyredraw = true
+-- vim.lazyredraw = true
 vim.opt.synmaxcol = 500
 vim.opt.termguicolors = true
 vim.g.moonflyItalics = 0
@@ -28,6 +28,8 @@ vim.diagnostic.config {
   virtual_text = false,
   underline = true,
 }
+-- vim.cmd [[colorscheme moonfly]]
+vim.cmd [[colorscheme catppuccin]]
 -- show diagnostics in hover window on cursor hold (see lspconfig wiki)
 -- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 -- vim.cmd [[
@@ -44,8 +46,6 @@ vim.opt.autoread = true
 vim.opt.swapfile = false -- disable swapfile
 vim.opt.undofile = true -- save file history across sessions
 vim.opt.undodir = vim.env.HOME .. '/.cache/nvim' -- set directory for the undo files
--- vim.cmd [[colorscheme moonfly]]
-vim.cmd [[colorscheme catppuccin]]
 
 -- ----------------------------------------------------------------------------
 -- Identation
@@ -92,6 +92,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>w', require('hop').hint_words, {})
 vim.keymap.set({ 'n', 'v' }, '<leader>l', require('hop').hint_lines, {})
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>', require('hop').hint_char2, {})
 vim.keymap.set('n', '<leader><backspace>', '<c-^>', {})
+vim.keymap.set({ 'n', 'i', 'v' }, '<cmd-j', '<cmd>KittyNavigateBottom<cr>')
 
 vim.cmd [[
   autocmd Filetype markdown lua vim.keymap.set('n', '<leader>p', ':Glow<cr>', { buffer=0 })

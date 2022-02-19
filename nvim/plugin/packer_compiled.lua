@@ -190,6 +190,11 @@ _G.packer_plugins = {
     path = "/Users/virginiacool/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["vim-kitty-navigator"] = {
+    loaded = true,
+    path = "/Users/virginiacool/.local/share/nvim/site/pack/packer/start/vim-kitty-navigator",
+    url = "https://github.com/knubie/vim-kitty-navigator"
+  },
   ["vim-moonfly-colors"] = {
     loaded = true,
     path = "/Users/virginiacool/.local/share/nvim/site/pack/packer/start/vim-moonfly-colors",

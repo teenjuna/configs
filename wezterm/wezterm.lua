@@ -1,4 +1,6 @@
 local wezterm = require("wezterm")
+local catppuccin = require("colors/catppuccin")
+
 return {
 	font = wezterm.font("JetBrains Mono"),
 	font_size = 13,
@@ -9,75 +11,12 @@ return {
 		right = 2,
 		top = 2,
 	},
-	color_scheme = "Catppuccin",
 	hide_tab_bar_if_only_one_tab = true,
 	use_fancy_tab_bar = false,
 	inactive_pane_hsb = {
 		brightness = 0.9,
 	},
-	-- colors = {
-	-- 	background = "#080808",
-	-- 	tab_bar = {
-	-- 		background = "#080808",
-	-- 		active_tab = {
-	-- 			bg_color = "#006644",
-	-- 			fg_color = "#ffffff",
-	-- 		},
-	-- 		inactive_tab = {
-	-- 			bg_color = "#000000",
-	-- 			fg_color = "#ffffff",
-	-- 		},
-	-- 		inactive_tab_hover = {
-	-- 			bg_color = "#006644",
-	-- 			fg_color = "#ffffff",
-	-- 		},
-	-- 		new_tab = {
-	-- 			bg_color = "#000000",
-	-- 			fg_color = "#ffffff",
-	-- 		},
-	-- 		new_tab_hover = {
-	-- 			bg_color = "#006644",
-	-- 			fg_color = "#ffffff",
-	-- 		},
-	-- 	},
-	-- },
-	-- Catppuccin theme
-	colors = {
-		indexed = { [16] = "#F8BD96", [17] = "#F5E0DC" },
-
-		scrollbar_thumb = "#575268",
-		split = "#161320",
-
-		tab_bar = {
-			background = "#1E1E2E",
-			active_tab = {
-				bg_color = "#575268",
-				fg_color = "#D9E0EE",
-			},
-			inactive_tab = {
-				bg_color = "#1E1E2E",
-				fg_color = "#D9E0EE",
-			},
-			inactive_tab_hover = {
-				bg_color = "#575268",
-				fg_color = "#D9E0EE",
-			},
-			new_tab = {
-				bg_color = "#1E1E2E",
-				fg_color = "#D9E0EE",
-			},
-			new_tab_hover = {
-				bg_color = "#575268",
-				fg_color = "#D9E0EE",
-				italic = true,
-			},
-		},
-
-		visual_bell = "#302D41",
-
-		-- nightbuild only
-		compose_cursor = "#F8BD96",
-	},
+	colors = catppuccin,
 	keys = {
 		{
 			mods = "CMD",

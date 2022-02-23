@@ -25,12 +25,6 @@ return require('packer').startup(function(use)
     branch = 'master',
   }
 
-  -- Integration with kitty
-  use {
-    'knubie/vim-kitty-navigator',
-    run = 'cp ./*.py ~/.config/kitty/',
-  }
-
   -- Themes
   use 'tjdevries/colorbuddy.nvim'
   use 'bluz71/vim-moonfly-colors'

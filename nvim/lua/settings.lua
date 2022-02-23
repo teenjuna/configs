@@ -12,7 +12,7 @@ vim.cmd [[
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'number'
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = '0'
 vim.opt.splitright = true
 vim.opt.hidden = true
 -- vim.lazyredraw = true
@@ -30,12 +30,6 @@ vim.diagnostic.config {
 }
 -- vim.cmd [[colorscheme moonfly]]
 vim.cmd [[colorscheme catppuccin]]
--- show diagnostics in hover window on cursor hold (see lspconfig wiki)
--- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
--- vim.cmd [[
---   " autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
---   autocmd! CursorHold * lua vim.diagnostic.open_float(nil, { focus=false })
--- ]]
 
 -- ----------------------------------------------------------------------------
 -- System integration
@@ -57,11 +51,6 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 vim.opt.linebreak = true
-
--- 2 spaces for selected filetypes
--- vim.cmd [[
---   autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2
--- ]]
 
 -- ----------------------------------------------------------------------------
 -- Mappings
@@ -92,7 +81,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>w', require('hop').hint_words, {})
 vim.keymap.set({ 'n', 'v' }, '<leader>l', require('hop').hint_lines, {})
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>', require('hop').hint_char2, {})
 vim.keymap.set('n', '<leader><backspace>', '<c-^>', {})
-vim.keymap.set({ 'n', 'i', 'v' }, '<cmd-j', '<cmd>KittyNavigateBottom<cr>')
+vim.keymap.set('n', '<c-j>', '<c-e>', {})
+vim.keymap.set('n', '<c-k>', '<c-y>', {})
+vim.keymap.set('i', '<c-n>', '<C-\\><C-O>:setl fo+=r<CR><CR><C-\\><C-O>:setl fo-=r<CR>')
 
 vim.cmd [[
   autocmd Filetype markdown lua vim.keymap.set('n', '<leader>p', ':Glow<cr>', { buffer=0 })
@@ -112,7 +103,7 @@ vim.opt.shortmess:append 'c'
 vim.cmd [[au BufWritePre * :%s/\s\+$//e]]
 
 -- don't auto commenting new lines
-vim.cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
+-- vim.cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 
 -- highlight on yank
 vim.api.nvim_exec(

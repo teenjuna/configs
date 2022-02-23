@@ -75,19 +75,14 @@ require('lspconfig').jdtls.setup {
 -- Setup Emmet
 require('lspconfig').emmet_ls.setup {
   on_attach = on_attach,
-  filetypes = { 'html', 'css', 'tsx', 'jsx' },
+  filetypes = { 'html', 'css', 'typescriptreact', 'typescript' },
 }
 
--- require('lspconfig').html.setup {
---   on_attach = on_attach,
---   settings = {
---     ['html'] = {
---       ['editor.links'] = false,
---     },
---   },
--- }
+require('lspconfig').html.setup {
+  on_attach = on_attach,
+}
 
--- Setup tailwind
+-- Setup tailwind (too slow)
 require('lspconfig').tailwindcss.setup {}
 
 -- Setup tsserver
@@ -117,9 +112,8 @@ require('null-ls').setup {
     -- See: https://github.com/sumneko/lua-language-server/wiki/code-reformat
     require('null-ls').builtins.formatting.stylua,
     require('null-ls').builtins.formatting.prettierd.with {
-      filetypes = { 'html', 'css', 'scss', 'json', 'yaml', 'markdown' },
+      filetypes = { 'html', 'css', 'scss', 'json', 'yaml', 'markdown', 'typescriptreact', 'typescript' },
     },
-    require('null-ls').builtins.diagnostics.eslint_d,
-    require('null-ls').builtins.completion.spell, -- this only brings garbage
+    -- require('null-ls').builtins.diagnostics.eslint_d,
   },
 }

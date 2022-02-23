@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 local catppuccin = require("colors/catppuccin")
 
 return {
+	colors = catppuccin,
 	font = wezterm.font("JetBrains Mono"),
 	font_size = 13,
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
@@ -14,9 +15,8 @@ return {
 	hide_tab_bar_if_only_one_tab = true,
 	use_fancy_tab_bar = false,
 	inactive_pane_hsb = {
-		brightness = 0.9,
+		brightness = 0.8,
 	},
-	colors = catppuccin,
 	keys = {
 		{
 			mods = "CMD",

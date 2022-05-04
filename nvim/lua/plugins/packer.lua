@@ -32,8 +32,10 @@ return require('packer').startup(function(use)
     'catppuccin/nvim',
     as = 'catppuccin',
   }
-  -- use 'rebelot/kanagawa.nvim'
+  use 'savq/melange'
+  use 'rebelot/kanagawa.nvim'
   use 'folke/tokyonight.nvim'
+  use 'NLKNguyen/papercolor-theme'
 
   -- LSP
   use 'neovim/nvim-lspconfig'

@@ -5,9 +5,10 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = bufnr })
   vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { buffer = bufnr })
   vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, { buffer = bufnr })
+  -- vim.keymap.set('n', '<leader>a', require('telescope').lsp_code_actions, { buffer = bufnr })
 
   -- Format on save
-  vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+  vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 end
 
 -- Setup rust_analyzer
@@ -24,11 +25,17 @@ require('rust-tools').setup {
     on_attach = on_attach,
     settings = {
       ['rust-analyzer'] = {
+        procMacro = {
+          enable = true,
+        },
         rustfmt = {
           extraArgs = { '+nightly' },
         },
         checkOnSave = {
           command = 'clippy',
+        },
+        cargo = {
+          -- features = { 'serde', 'unprocessed' },
         },
       },
     },
@@ -36,7 +43,7 @@ require('rust-tools').setup {
 }
 
 -- Setup sumneko_lua
-vim.lsp.set_log_level 'debug'
+-- vim.lsp.set_log_level 'debug'
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
@@ -73,23 +80,27 @@ require('lspconfig').jdtls.setup {
 }
 
 -- Setup Emmet
-require('lspconfig').emmet_ls.setup {
-  on_attach = on_attach,
-  filetypes = { 'html', 'css', 'typescriptreact', 'typescript' },
-}
+-- require('lspconfig').emmet_ls.setup {
+--   on_attach = on_attach,
+--   filetypes = { 'typescriptreact', 'html', 'css' },
+-- }
 
-require('lspconfig').html.setup {
-  on_attach = on_attach,
-}
+-- require('lspconfig').html.setup {
+--   on_attach = on_attach,
+-- }
 
 -- Setup tailwind (too slow)
-require('lspconfig').tailwindcss.setup {}
+-- require('lspconfig').tailwindcss.setup {
+--   on_attach = on_attach,
+-- }
 
 -- Setup tsserver
 require('lspconfig').tsserver.setup {
   on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    -- client.resolved_capabilities.document_formatting = false
+    -- client.resolved_capabilities.document_range_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
 }
@@ -111,6 +122,9 @@ require('null-ls').setup {
     -- TODO: setup sumneko_lua formatting.
     -- See: https://github.com/sumneko/lua-language-server/wiki/code-reformat
     require('null-ls').builtins.formatting.stylua,
+    -- pnpm install -g @fsouza/prettierd
+		-- also, don't forget aout prettier-plugin-tailwindcss (https://tailwindcss.com/blog/automatic-class-sorting-with-prettier).
+		-- and don't forget to specify the plugin in the local prettier config
     require('null-ls').builtins.formatting.prettierd.with {
       filetypes = { 'html', 'css', 'scss', 'json', 'yaml', 'markdown', 'typescriptreact', 'typescript' },
     },

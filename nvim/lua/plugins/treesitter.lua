@@ -1,6 +1,5 @@
 require('nvim-treesitter.configs').setup {
-  ensure_installed = 'maintained',
-  sync_install = false,
+  sync_install = true,
   highlight = {
     enable = true,
     disable = { 'html' },

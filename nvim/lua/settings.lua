@@ -9,6 +9,7 @@ vim.cmd [[
 -- ----------------------------------------------------------------------------
 -- UI
 -- ----------------------------------------------------------------------------
+vim.opt.laststatus = 3
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'number'
@@ -29,7 +30,14 @@ vim.diagnostic.config {
   underline = true,
 }
 -- vim.cmd [[colorscheme moonfly]]
-vim.cmd [[colorscheme catppuccin]]
+-- vim.cmd [[colorscheme catppuccin]]
+-- TODO: do something with autogroups
+vim.cmd [[au ColorScheme PaperColor hi Normal        guibg=None]]
+vim.cmd [[au ColorScheme PaperColor hi NonText       guibg=None]]
+vim.cmd [[au ColorScheme PaperColor hi LineNr        guibg=None]]
+vim.cmd [[au ColorScheme PaperColor hi WinSeparator  guibg=None]]
+vim.cmd [[colorscheme PaperColor]]
+vim.cmd [[set background=light]]
 
 -- ----------------------------------------------------------------------------
 -- System integration
@@ -40,6 +48,7 @@ vim.opt.autoread = true
 vim.opt.swapfile = false -- disable swapfile
 vim.opt.undofile = true -- save file history across sessions
 vim.opt.undodir = vim.env.HOME .. '/.cache/nvim' -- set directory for the undo files
+vim.opt.backupcopy = 'no'
 
 -- ----------------------------------------------------------------------------
 -- Identation

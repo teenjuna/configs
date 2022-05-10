@@ -7,19 +7,22 @@ cmp.setup {
       require('luasnip').lsp_expand(args.body)
     end,
   },
-  mapping = {
+
+  mapping = cmp.mapping.preset.insert({
+    ['<c-y>'] = cmp.mapping.confirm {
+      select = true,
+      bahvior = cmp.ConfirmBehavior.Insert,
+    },
+		['<c-n>'] = cmp.mapping.select_next_item(),
+		['<c-p>'] = cmp.mapping.select_prev_item(),
     ['<c-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<c-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<c-y>'] = cmp.mapping.confirm {
-      bahvior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    },
     ['<c-e>'] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
     ['<c-space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-  },
+  }),
 
   sources = cmp.config.sources({
     { name = 'luasnip' },
@@ -46,10 +49,18 @@ cmp.setup {
     },
   },
 
+	view = {
+		entries = 'native',
+	},
+
   experimental = {
-    native_menu = false,
     ghost_text = true,
   },
+}
+
+cmp.setup.cmdline {
+  mapping = cmp.mapping.preset.cmdline({
+  })
 }
 
 -- nvim-cmp highlight groups

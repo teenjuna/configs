@@ -97,11 +97,10 @@ require('lspconfig').jdtls.setup {
 -- Setup tsserver
 require('lspconfig').tsserver.setup {
   on_attach = function(client, bufnr)
-    -- client.resolved_capabilities.document_formatting = false
-    -- client.resolved_capabilities.document_range_formatting = false
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
+    -- There's also https://www.reddit.com/r/neovim/comments/u5si2w/comment/i55p6s1/?utm_source=share&utm_medium=web2x&context=3
   end,
 }
 
@@ -121,13 +120,17 @@ require('null-ls').setup {
   sources = {
     -- TODO: setup sumneko_lua formatting.
     -- See: https://github.com/sumneko/lua-language-server/wiki/code-reformat
+
+    -- $ cargo install stylua
     require('null-ls').builtins.formatting.stylua,
+
     -- pnpm install -g @fsouza/prettierd
-		-- also, don't forget aout prettier-plugin-tailwindcss (https://tailwindcss.com/blog/automatic-class-sorting-with-prettier).
-		-- and don't forget to specify the plugin in the local prettier config
+    -- also, don't forget aout prettier-plugin-tailwindcss (https://tailwindcss.com/blog/automatic-class-sorting-with-prettier).
+    -- and don't forget to specify the plugin in the local prettier config
     require('null-ls').builtins.formatting.prettierd.with {
       filetypes = { 'html', 'css', 'scss', 'json', 'yaml', 'markdown', 'typescriptreact', 'typescript' },
     },
+
     -- require('null-ls').builtins.diagnostics.eslint_d,
   },
 }

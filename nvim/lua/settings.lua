@@ -92,7 +92,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader><leader>', require('hop').hint_char2, {})
 vim.keymap.set('n', '<leader><backspace>', '<c-^>', {})
 vim.keymap.set('n', '<c-j>', '<c-e>', {})
 vim.keymap.set('n', '<c-k>', '<c-y>', {})
-vim.keymap.set('i', '<c-n>', '<C-\\><C-O>:setl fo+=r<CR><CR><C-\\><C-O>:setl fo-=r<CR>')
+-- vim.keymap.set('i', '<c-n>', '<C-\\><C-O>:setl fo+=r<CR><CR><C-\\><C-O>:setl fo-=r<CR>')
 
 vim.cmd [[
   autocmd Filetype markdown lua vim.keymap.set('n', '<leader>p', ':Glow<cr>', { buffer=0 })

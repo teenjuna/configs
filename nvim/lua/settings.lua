@@ -29,15 +29,15 @@ vim.diagnostic.config {
   virtual_text = false,
   underline = true,
 }
--- vim.cmd [[colorscheme moonfly]]
+vim.cmd [[colorscheme moonfly]]
 -- vim.cmd [[colorscheme catppuccin]]
 -- TODO: do something with autogroups
-vim.cmd [[au ColorScheme PaperColor hi Normal        guibg=None]]
-vim.cmd [[au ColorScheme PaperColor hi NonText       guibg=None]]
-vim.cmd [[au ColorScheme PaperColor hi LineNr        guibg=None]]
-vim.cmd [[au ColorScheme PaperColor hi WinSeparator  guibg=None]]
-vim.cmd [[colorscheme PaperColor]]
-vim.cmd [[set background=light]]
+-- vim.cmd [[au ColorScheme PaperColor hi Normal        guibg=None]]
+-- vim.cmd [[au ColorScheme PaperColor hi NonText       guibg=None]]
+-- vim.cmd [[au ColorScheme PaperColor hi LineNr        guibg=None]]
+-- vim.cmd [[au ColorScheme PaperColor hi WinSeparator  guibg=None]]
+-- vim.cmd [[colorscheme PaperColor]]
+-- vim.cmd [[set background=light]]
 
 -- ----------------------------------------------------------------------------
 -- System integration
@@ -53,9 +53,8 @@ vim.opt.backupcopy = 'no'
 -- ----------------------------------------------------------------------------
 -- Identation
 -- ----------------------------------------------------------------------------
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 0 -- value of tabstop
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
@@ -82,7 +81,7 @@ vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, {})
 vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers, {})
 vim.keymap.set('n', '<leader>g', require('telescope.builtin').live_grep, {})
 vim.keymap.set('n', '<leader>s', require('telescope.builtin').lsp_document_symbols, {})
-vim.keymap.set('n', '<leader>t', require('telescope.builtin').treesitter, {})
+-- vim.keymap.set('n', '<leader>t', require('telescope.builtin').treesitter, {})
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
@@ -93,6 +92,7 @@ vim.keymap.set('n', '<leader><backspace>', '<c-^>', {})
 vim.keymap.set('n', '<c-j>', '<c-e>', {})
 vim.keymap.set('n', '<c-k>', '<c-y>', {})
 -- vim.keymap.set('i', '<c-n>', '<C-\\><C-O>:setl fo+=r<CR><CR><C-\\><C-O>:setl fo-=r<CR>')
+vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeToggle<cr>', {})
 
 vim.cmd [[
   autocmd Filetype markdown lua vim.keymap.set('n', '<leader>p', ':Glow<cr>', { buffer=0 })
@@ -107,6 +107,9 @@ vim.opt.shortmess:append 'c'
 -- ----------------------------------------------------------------------------
 -- Auto commands
 -- ----------------------------------------------------------------------------
+
+-- identify Astro.js files (remove when nvim adds native support)
+vim.cmd [[ au! BufRead,BufNewFile *.astro set filetype=astro ]]
 
 -- remove whitespace on save
 vim.cmd [[au BufWritePre * :%s/\s\+$//e]]

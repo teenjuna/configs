@@ -25,6 +25,15 @@ return require('packer').startup(function(use)
     branch = 'master',
   }
 
+  -- Directory tree
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly', -- optional, updated every week. (see issue #1193)
+  }
+
   -- Themes
   use 'tjdevries/colorbuddy.nvim'
   use 'bluz71/vim-moonfly-colors'
@@ -58,6 +67,7 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind-nvim'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
+  use 'github/copilot.vim'
 
   -- Auto pairs
   use 'windwp/nvim-autopairs'

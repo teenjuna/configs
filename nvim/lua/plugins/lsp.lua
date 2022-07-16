@@ -69,6 +69,10 @@ require('lspconfig').sumneko_lua.setup {
   },
 }
 
+require('lspconfig').graphql.setup {
+  on_attach = on_attach,
+}
+
 -- Setup jdtls
 -- NOTE: jdtls requires $WORKSPACE variable to be set.
 -- To use it with different projects, use `direnv`.
@@ -102,6 +106,19 @@ require('lspconfig').tsserver.setup {
     on_attach(client, bufnr)
     -- There's also https://www.reddit.com/r/neovim/comments/u5si2w/comment/i55p6s1/?utm_source=share&utm_medium=web2x&context=3
   end,
+  commands = {
+    OrganizeImports = {
+      function()
+        local params = {
+          command = '_typescript.organizeImports',
+          arguments = { vim.api.nvim_buf_get_name(0) },
+          title = '',
+        }
+        vim.lsp.buf.execute_command(params)
+      end,
+      description = 'Organize Imports',
+    },
+  },
 }
 
 -- Setup cssls
@@ -112,6 +129,14 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig').cssls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+require('lspconfig').svelte.setup {
+  on_attach = on_attach,
+}
+
+require('lspconfig').astro.setup {
+  on_attach = on_attach,
 }
 
 -- Setup null-ls

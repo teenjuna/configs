@@ -1,6 +1,11 @@
 local cmp = require 'cmp'
 local lspkind = require 'lspkind'
 
+vim.cmd [[
+  let g:copilot_no_tab_map = v:true
+  imap <expr> <Plug>(vimrc:copilot-dummy-map) copilot#Accept("\<Tab>")
+]]
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -8,21 +13,31 @@ cmp.setup {
     end,
   },
 
-  mapping = cmp.mapping.preset.insert({
-    ['<c-y>'] = cmp.mapping.confirm {
-      select = true,
-      bahvior = cmp.ConfirmBehavior.Insert,
-    },
-		['<c-n>'] = cmp.mapping.select_next_item(),
-		['<c-p>'] = cmp.mapping.select_prev_item(),
+  mapping = cmp.mapping.preset.insert {
+    -- ['<c-l>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<c-y>'] = cmp.mapping(
+      cmp.mapping.confirm {
+        select = true,
+        bahvior = cmp.ConfirmBehavior.Insert,
+      },
+      { 'i', 's', 'c' }
+    ),
+    ['<c-n>'] = cmp.mapping.select_next_item(),
+    ['<c-p>'] = cmp.mapping.select_prev_item(),
     ['<c-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<c-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<c-e>'] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
-    ['<c-space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-  }),
+    ['<C-g>'] = cmp.mapping(function(fallback)
+      vim.api.nvim_feedkeys(
+        vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)),
+        'n',
+        true
+      )
+    end),
+  },
 
   sources = cmp.config.sources({
     { name = 'luasnip' },
@@ -49,18 +64,17 @@ cmp.setup {
     },
   },
 
-	view = {
-		entries = 'native',
-	},
+  view = {
+    entries = 'native',
+  },
 
   experimental = {
-    ghost_text = true,
+    ghost_text = false, -- conflicts with copilot.vim
   },
 }
 
 cmp.setup.cmdline {
-  mapping = cmp.mapping.preset.cmdline({
-  })
+  mapping = cmp.mapping.preset.cmdline {},
 }
 
 -- nvim-cmp highlight groups

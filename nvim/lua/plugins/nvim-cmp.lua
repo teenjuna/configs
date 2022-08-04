@@ -17,7 +17,7 @@ cmp.setup {
     -- ['<c-l>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<c-y>'] = cmp.mapping(
       cmp.mapping.confirm {
-        select = true,
+        select = false,
         bahvior = cmp.ConfirmBehavior.Insert,
       },
       { 'i', 's', 'c' }

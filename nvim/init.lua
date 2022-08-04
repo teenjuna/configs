@@ -10,3 +10,5 @@ require 'plugins/markdown-preview'
 require 'plugins/catppuccin'
 require 'plugins/nvim-tree'
 require 'settings'
+
+vim.cmd [[hi NvimTreeCursorLine guifg=bg guibg=fg]]

@@ -21,8 +21,8 @@ vim.opt.synmaxcol = 500
 vim.opt.termguicolors = true
 vim.g.moonflyItalics = 0
 vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+-- vim.opt.ignorecase = true
+-- vim.opt.smartcase = true
 vim.opt.hlsearch = false
 vim.opt.updatetime = 100
 vim.diagnostic.config {
@@ -38,6 +38,7 @@ vim.cmd [[colorscheme moonfly]]
 -- vim.cmd [[au ColorScheme PaperColor hi WinSeparator  guibg=None]]
 -- vim.cmd [[colorscheme PaperColor]]
 -- vim.cmd [[set background=light]]
+vim.cmd [[hi NvimTreeCursorLine guifg=fg guibg=red]]
 
 -- ----------------------------------------------------------------------------
 -- System integration

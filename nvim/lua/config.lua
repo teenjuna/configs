@@ -21,7 +21,6 @@ vim.g.moonflyItalics = false
 vim.g.moonflyNormalFloat = true
 vim.g.moonflyWinSeparator = 2
 vim.cmd [[colorscheme moonfly]]
-
 -------------------------------------------------------------------------------
 -- Indentation
 -------------------------------------------------------------------------------
@@ -35,8 +34,15 @@ vim.opt.linebreak = true
 -------------------------------------------------------------------------------
 -- Keymaps
 -------------------------------------------------------------------------------
+vim.opt.keymap = 'russian-jcukenwin'
+vim.opt.iminsert = 0
+vim.opt.imsearch = 0
+
 vim.g.mapleader = ' '
 vim.keymap.set('i', 'jk', '<esc>', {})
+vim.keymap.set({ 'i' }, '<s-space>', '<c-^>', {}) -- for 'russian-jcukenwin' switch
+vim.keymap.set({ 'n', 'v', 'o' }, 'j', 'gj', {})
+vim.keymap.set({ 'n', 'v', 'o' }, 'k', 'gk', {})
 vim.keymap.set('n', '<leader><backspace>', '<c-^>', {})
 vim.keymap.set({ 'n', 'v', 'o' }, 'H', '^', {})
 vim.keymap.set({ 'n', 'v', 'o' }, 'L', '$', {})

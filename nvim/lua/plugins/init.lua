@@ -116,6 +116,13 @@ return require('packer').startup(function(use)
 			require('todo-comments').setup()
 		end
 	}
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		config = function()
+			require('plugins/lualine')
+		end
+	}
 
 	-- Colorschemes
 	use 'bluz71/vim-moonfly-colors'

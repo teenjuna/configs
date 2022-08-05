@@ -76,12 +76,18 @@ return require('packer').startup(function(use)
 	}
 	use 'github/copilot.vim'
 
-	-- Treesitter
+	-- Syntax
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 		config = function()
 			require('plugins/treesitter')
+		end
+	}
+	use {
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
 		end
 	}
 

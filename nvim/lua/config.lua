@@ -2,6 +2,8 @@
 -- UI
 -------------------------------------------------------------------------------
 vim.opt.laststatus = 3
+-- TODO: add autocmd that sets `vim.wo.winbar` to every filetype but the NvimTree
+vim.opt.winbar = '%=%m %f%='
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'number'
@@ -17,8 +19,11 @@ vim.diagnostic.config {
 vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.termguicolors = true
 -- TODO: customize moonfly so that normalFloat is more like nvim-cmp's menu
+-- TODO: customize the look of tabline
+-- https://stackoverflow.com/questions/7238113/customising-the-colours-of-vims-tab-bar
 vim.g.moonflyItalics = false
 vim.g.moonflyNormalFloat = true
+vim.g.moonflyWinSeparator = 2
 vim.cmd [[colorscheme moonfly]]
 
 -------------------------------------------------------------------------------

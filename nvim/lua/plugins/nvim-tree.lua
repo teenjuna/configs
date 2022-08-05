@@ -11,5 +11,6 @@ require('nvim-tree').setup {
 local api = require('nvim-tree.api')
 local Event = api.events.Event
 api.events.subscribe(Event.TreeOpen, function()
+	vim.wo.winbar = ''
 	vim.wo.cursorline = true
 end)

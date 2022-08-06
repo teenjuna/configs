@@ -4,6 +4,11 @@ vim.cmd [[
   imap <expr> <Plug>(vimrc:copilot-dummy-map) copilot#Accept("\<Tab>")
 ]]
 
+
+local winhighlight = {
+	winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel',
+}
+
 local cmp = require('cmp')
 
 cmp.setup({
@@ -13,8 +18,8 @@ cmp.setup({
 		end,
 	},
 	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(winhighlight),
+		documentation = cmp.config.window.bordered(winhighlight),
 	},
 	mapping = cmp.mapping.preset.insert({
 		['<C-u>']     = cmp.mapping.scroll_docs(-4),
@@ -40,16 +45,30 @@ cmp.setup({
 	})
 })
 
+
+local handlers = {
+	['textDocument/hover'] = vim.lsp.with(
+		vim.lsp.handlers.hover,
+		{ border = 'rounded' }
+	),
+	['textDocument/signatureHelp'] = vim.lsp.with(
+		vim.lsp.handlers.signature_help,
+		{ border = 'rounded' }
+	),
+}
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 require('mason-lspconfig').setup_handlers {
 	function(server_name)
 		require('lspconfig')[server_name].setup {
-			capabilities = capabilities
+			capabilities = capabilities,
+			handlers = handlers
 		}
 	end,
 	['sumneko_lua'] = function()
 		require('lspconfig').sumneko_lua.setup {
 			capabilities = capabilities,
+			handlers = handlers,
 			settings = {
 				Lua = {
 					runtime = {

@@ -13,14 +13,21 @@ vim.diagnostic.config {
 	underline = true,
 }
 vim.opt.completeopt = 'menu,menuone,noselect'
+
 vim.opt.termguicolors = true
--- TODO: customize moonfly so that normalFloat is more like nvim-cmp's menu
 -- TODO: customize the look of statusline and winbar
 -- https://stackoverflow.com/questions/7238113/customising-the-colours-of-vims-tab-bar
 vim.g.moonflyItalics = false
 vim.g.moonflyNormalFloat = true
 vim.g.moonflyWinSeparator = 2
 vim.cmd [[colorscheme moonfly]]
+vim.cmd([[hi! link NormalFloat Normal]])
+vim.cmd([[hi! link FloatBorder Normal]])
+vim.cmd([[hi! link CursorLine Visual]])
+vim.cmd([[hi! link TelescopeNormal Normal]])
+vim.cmd([[hi! link TelescopeTitle Normal]])
+vim.cmd([[hi! link TelescopeBorder FloatBorder]])
+
 -------------------------------------------------------------------------------
 -- Indentation
 -------------------------------------------------------------------------------

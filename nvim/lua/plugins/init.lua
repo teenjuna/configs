@@ -126,8 +126,15 @@ return require('packer').startup(function(use)
 
 	-- Colorschemes
 	use 'bluz71/vim-moonfly-colors'
+	use 'NLKNguyen/papercolor-theme'
 	use {
 		'catppuccin/nvim',
 		as = 'catppuccin',
+	}
+	use {
+		'daschw/leaf.nvim',
+		config = function()
+			require('plugins/leaf')
+		end
 	}
 end)

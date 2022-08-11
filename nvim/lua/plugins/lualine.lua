@@ -17,7 +17,7 @@ require('lualine').setup({
 		lualine_b = { 'branch', 'diff' },
 		lualine_c = {},
 		lualine_x = { 'diagnostics' },
-		lualine_y = { 'encoding', 'filetype', 'progress' },
+		lualine_y = { 'encoding', { 'filetype', icons_enabled = false }, 'progress' },
 		lualine_z = { 'location' }
 	},
 	winbar = {

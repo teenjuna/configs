@@ -47,12 +47,14 @@ vim.opt.imsearch = 0
 
 vim.g.mapleader = ' '
 vim.keymap.set('i', 'jk', '<esc>', {})
+vim.keymap.set('n', '<leader>q', function() vim.cmd('close') end, {})
 --vim.keymap.set({ 'i' }, '<s-space>', '<c-^>', {}) -- for 'russian-jcukenwin' switch
 vim.keymap.set({ 'n', 'v', 'o' }, 'j', 'gj', {})
 vim.keymap.set({ 'n', 'v', 'o' }, 'k', 'gk', {})
 vim.keymap.set('n', '<leader><backspace>', '<c-^>', {})
 vim.keymap.set({ 'n', 'v', 'o' }, 'H', '^', {})
 vim.keymap.set({ 'n', 'v', 'o' }, 'L', '$', {})
+vim.keymap.set('v', 'y', 'ygv<esc>', {})
 vim.keymap.set('n', 'n', 'nzz', {})
 vim.keymap.set('n', 'N', 'Nzz', {})
 vim.keymap.set('n', '*', '*zz', {})

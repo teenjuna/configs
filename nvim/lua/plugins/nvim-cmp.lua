@@ -1,8 +1,8 @@
 -- Disable Copilot's <Tab> expand
-vim.cmd [[
-  let g:copilot_no_tab_map = v:true
-  imap <expr> <Plug>(vimrc:copilot-dummy-map) copilot#Accept("\<Tab>")
-]]
+-- vim.cmd [[
+--   let g:copilot_no_tab_map = v:true
+--   imap <expr> <Plug>(vimrc:copilot-dummy-map) copilot#Accept("\<Tab>")
+-- ]]
 
 
 local winhighlight = {
@@ -27,18 +27,19 @@ cmp.setup({
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>']     = cmp.mapping.abort(),
 		['<C-y>']     = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-		['<C-g>']     = cmp.mapping(function()
-			vim.api.nvim_feedkeys(
-				vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)),
-				'n',
-				true
-			)
-		end),
+		-- ['<C-g>']     = cmp.mapping(function()
+		-- 	vim.api.nvim_feedkeys(
+		-- 		vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)),
+		-- 		'n',
+		-- 		true
+		-- 	)
+		-- end),
 	}),
 	sources = cmp.config.sources({
 		{ name = 'luasnip' },
 		{ name = 'nvim_lsp' },
 		{ name = 'nvim_lua' },
+		{ name = 'copilot' },
 	}, {
 		{ name = 'buffer' },
 		{ name = 'path' },

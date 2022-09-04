@@ -39,6 +39,7 @@ return require('packer').startup(function(use)
 			{ 'williamboman/mason-lspconfig.nvim' },
 			{ 'neovim/nvim-lspconfig' },
 			{ 'simrat39/rust-tools.nvim' },
+			{ 'fatih/vim-go' },
 		},
 		config = function()
 			require('mason').setup()
@@ -74,7 +75,26 @@ return require('packer').startup(function(use)
 			require('nvim-autopairs').setup()
 		end
 	}
-	use 'github/copilot.vim'
+	-- use 'github/copilot.vim' -- used only for auth (copilot.lua doesn't support this right now)
+	use {
+		'zbirenbaum/copilot.lua',
+		requires = {
+			{ 'zbirenbaum/copilot-cmp', module = 'copilot_cmp' }
+		},
+		event = 'InsertEnter',
+		config = function()
+			vim.schedule(function()
+				require('copilot').setup({
+					require('copilot').setup {
+						cmp = {
+							enabled = true,
+							method = 'getCompletionsCycling',
+						}
+					},
+				})
+			end)
+		end,
+	}
 
 	-- Syntax
 	use {
@@ -84,10 +104,18 @@ return require('packer').startup(function(use)
 			require('plugins/treesitter')
 		end
 	}
+	use 'jparise/vim-graphql'
+
+	-- Comments
 	use {
 		'numToStr/Comment.nvim',
+		branch = 'jsx',
 		config = function()
-			require('Comment').setup()
+			require('Comment').setup({
+				-- pre_hook = function(ctx)
+				-- 	return require('Comment.jsx').calculate(ctx)
+				-- end,
+			})
 		end
 	}
 
@@ -107,15 +135,15 @@ return require('packer').startup(function(use)
 			require('plugins/dressing')
 		end
 	}
-	use {
-		'folke/todo-comments.nvim',
-		requires = {
-			{ 'nvim-lua/plenary.nvim' }
-		},
-		config = function()
-			require('todo-comments').setup()
-		end
-	}
+	-- use {
+	-- 	'folke/todo-comments.nvim',
+	-- 	requires = {
+	-- 		{ 'nvim-lua/plenary.nvim' }
+	-- 	},
+	-- 	config = function()
+	-- 		require('todo-comments').setup()
+	-- 	end
+	-- }
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
